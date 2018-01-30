@@ -9,10 +9,16 @@ Then simply use:
 ```shell
 $ pipenv install
 ``` 
-## Local Testing
+
+You will also need the heroku CLI. On Ubuntu: 
+```shell
+$ sudo snap install heroku --classic
+```
+
+### Local Testing
 Run `run.py` for a local development server.
 
-## Deployment
+### Deployment
 Heroku server live at https://htl-p1-bear.herokuapp.com/
 
 

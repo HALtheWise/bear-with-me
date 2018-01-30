@@ -13,3 +13,5 @@ url = "https://pypi.python.org/simple"
 
 gunicorn = "*"
 flask = "*"
+flask-sqlalchemy = "*"
+"psycopg2" = "*"
