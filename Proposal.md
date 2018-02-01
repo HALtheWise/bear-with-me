@@ -10,11 +10,11 @@ HtL Project Proposal – Bear With Me
 
 *[Review in class on Thursday 2/1]*
 
-**_What is the main idea of your project?_**
+## What is the main idea of your project?
 
 Creating authentic human connection in the modern world, via bear.
 
-**_What functionality will you demonstrate on Show & Tell? Divide this into MVP and Stretch Goals. _**
+## What functionality will you demonstrate on Show & Tell? Divide this into MVP and Stretch Goals. 
 
 MVP: 
 
@@ -30,7 +30,7 @@ Stretch Goals:
 
 * Security
 
-**_What are the ranked risks to your project's success?_**
+## What are the ranked risks to your project's success?
 
 1. Calls aren't fun
 
@@ -53,7 +53,7 @@ Stretch Goals:
 
 For each practice area:
 
-**_How you will demonstrate command of this area? What does success look like? [2-5 sentences]_**
+## How you will demonstrate command of this area? What does success look like? [2-5 sentences]
 
 * * *
 
