@@ -45,11 +45,17 @@ Copy `env.template` to `env.local` and edit the variables inside to match your c
 To set the environment, simply `$ source env.local`. 
 
 ### Database Migrations
-Not quite ready yet, but something along the lines of:
+
+To change database schema, modify the models.py file, then commit the migration:
 ```shell
 $ pipenv run flask db migrate -m "Changelog goes here"
+```
+Check the migration script, and apply with:
+```shell
 $ pipenv run flask db upgrade
 ```
+
+To upgrade the production database, run the procfile upgrade on heroku.
 
 ## Local Testing
 To start a local webserver, run:
