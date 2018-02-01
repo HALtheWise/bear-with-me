@@ -12,6 +12,7 @@ url = "https://pypi.python.org/simple"
 [packages]
 
 gunicorn = "*"
-flask = "*"
-flask-sqlalchemy = "*"
+Flask = "*"
+Flask-SQLAlchemy = "*"
 "psycopg2" = "*"
+flask-migrate = "*"
