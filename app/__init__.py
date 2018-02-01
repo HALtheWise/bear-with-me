@@ -22,16 +22,16 @@ def hello_world():
     return 'Hello, World!'
 
 @app.route('/add/<string:name>')
-def webhook(name):
+def add(name):
     u = User(name = name)
     print("creating user", u)
     db.session.add(u)
     db.session.commit()
     return "user {} created".format(name)
 
-@app.route('/delete/')
-def delete():
-    u = User.query.get(i)
+@app.route('/delete/<string:name>')
+def delete(name):
+    u = User.query.filter_by(name=name).first_or_404()
     db.session.delete(u)
     db.session.commit()
     return "user deleted"

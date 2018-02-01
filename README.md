@@ -47,7 +47,7 @@ To set the environment, simply `$ source env.local`.
 ### Database Migrations
 Not quite ready yet, but something along the lines of:
 ```shell
-$ pipenv run flask db migrate
+$ pipenv run flask db migrate -m "Changelog goes here"
 $ pipenv run flask db upgrade
 ```
 
