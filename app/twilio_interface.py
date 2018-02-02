@@ -14,6 +14,12 @@ client = Client(ACCOUNT_SID, AUTH_TOKEN)
 
 
 class Message(object):
+    """
+    This is the internal representation of an incomming or outgoing text message.
+    The number stored here is the phone number ('+15555555555') of the participant in the exchange
+    that is not the bear.
+    """
+
     def __init__(self, number, text):
         """
         :type number: str
@@ -25,13 +31,12 @@ class Message(object):
     def __repr__(self):
         return '({}): "{}"'.format(self.number, self.text)
 
-
-def send_message(message):
-    client.api.account.messages.create(
-        to=message.number,
-        from_=PHONE_NUMBER,
-        body=message.text
-    )
+    def send(self):
+        client.api.account.messages.create(
+            to=self.number,
+            from_=PHONE_NUMBER,
+            body=self.text
+        )
 
 
 def get_old_messages(since=datetime.datetime.now() - datetime.timedelta(hours=1)):

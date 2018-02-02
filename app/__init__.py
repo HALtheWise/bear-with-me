@@ -3,8 +3,8 @@ import os
 from flask import Flask
 from flask_migrate import Migrate
 
-
 from app.models import *
+from app import text_ui
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Handles deprecation warning
@@ -25,6 +25,9 @@ def add(name):
     db.session.add(u)
     db.session.commit()
     return "user {} created".format(name)
+
+
+app.add_url_rule('/test/textui', 'test_textui', text_ui.test)
 
 
 @app.route('/delete/<string:name>')
