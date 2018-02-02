@@ -1,3 +1,4 @@
+import html
 import os
 
 from flask import Flask
@@ -40,4 +41,8 @@ def delete(name):
 
 @app.route('/view')
 def view():
-    return User.query.all()
+    records = []
+    for u in User.query.all():
+        records.append(html.escape(str(u)))
+    return '<br>'.join(records)
+

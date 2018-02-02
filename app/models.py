@@ -10,4 +10,4 @@ class User(db.Model):
     last_call = db.Column(db.DateTime())
 
     def __repr__(self):
-        return '<User {} ({})>'.format(self.phone, 'active' if self.active else 'inactive')
+        return '[User {} ({})]'.format(self.phone, 'active' if self.active else 'inactive')
