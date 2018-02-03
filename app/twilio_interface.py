@@ -1,5 +1,7 @@
 import datetime
 import os
+from io import StringIO
+
 from twilio.rest import Client
 
 ACCOUNT_SID = os.getenv('TWILIO_ACCOUNT_SID')
@@ -45,10 +47,13 @@ def get_old_messages(since=datetime.datetime.now() - datetime.timedelta(hours=1)
 
 
 def test():
-    print("Retrieving messages sent in the last hour")
+    result = StringIO()
+    print("Retrieving messages sent in the last hour", file=result)
     for msg in get_old_messages():
-        print(msg)
+        print(msg, file=result)
+
+    return result.getvalue()
 
 
 if __name__ == '__main__':
-    test()
+    print(test())

@@ -13,15 +13,16 @@ SIGNDOWN_REQUESTS = [s.upper() for s in SIGNDOWN_REQUESTS]
 
 
 SIGNDOWN_RESPONSE = '🐻: Sad to see you go, text "I\'m in" at any time to join again'
-SIGNUP_RESPONSE = '🐻: Welcome to the experiment! You could get a call at any time during SLAC.'
+SIGNUP_RESPONSE = '🐻: Welcome to the experiment! ' \
+                  'Call the bear at any time during SLAC to connect with a random Oliner!'
 INSTRUCTIONS_RESPONSE = '🐻: Sorry, I didn\'t understand that. ' \
-                        'Text "I\'m in" at any time to join, or "I\'m out" to get out'
+                        'Text "I\'m in" at any time to join, or "I\'m out" to get out.'
 
 def handle_message(msg):
     """
     Takes action in response to a message including, if necessary, responding.
     :param (Message) msg: The incomming text message prompting the conversation
-    :return: Whether any database action was taken
+    :return (bool): Whether any database action was taken
     """
     print('Handling message "{}"'.format(msg.text))
 
@@ -63,7 +64,3 @@ def test():
     handle_message(next(get_old_messages()))
 
     return str(User.query.all())
-
-
-if __name__ == '__main__':
-    test()
