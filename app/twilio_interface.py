@@ -13,7 +13,8 @@ assert AUTH_TOKEN, 'Error: the TWILIO_AUTH_TOKEN is not set'
 assert PHONE_NUMBER, 'Error: the TWILIO_PHONE_NUMBER is not set'
 
 client = Client(ACCOUNT_SID, AUTH_TOKEN)
-
+number, = client.incoming_phone_numbers.list(phone_number=PHONE_NUMBER)
+number.update(voice_url="https://htl-p1-bear.herokuapp.com/call/incoming")
 
 class Message(object):
     """

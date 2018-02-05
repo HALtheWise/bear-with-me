@@ -2,7 +2,7 @@ import html
 import os
 from datetime import datetime
 
-from flask import Flask
+from flask import Flask, request
 from flask_migrate import Migrate
 
 from app.models import *
@@ -43,6 +43,10 @@ def delete():
     db.session.commit()
     return "user deleted"
 
+@app.route('/call/incoming')
+def answer():
+    msg = twilio_interface.Message(request.form['From'], "you called?")
+    msg.send()
 
 @app.route('/view')
 def view():
