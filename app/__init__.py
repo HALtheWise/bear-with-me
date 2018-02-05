@@ -1,5 +1,6 @@
 import html
 import os
+from datetime import datetime
 
 from flask import Flask
 from flask_migrate import Migrate
@@ -26,18 +27,18 @@ def hello_world():
     return 'Hello, World!'
 
 
-@app.route('/add/<string:name>')
-def add(name):
-    u = User(name=name)
+@app.route('/test/add/')
+def add():
+    u = User(phone='911',active=True,last_call=datetime.now()) #TODO: Reasonable test data
     print("creating user", u)
     db.session.add(u)
     db.session.commit()
-    return "user {} created".format(name)
+    return "user created"
 
 
-@app.route('/delete/<string:name>')
-def delete(name):
-    u = User.query.filter_by(name=name).first_or_404()
+@app.route('/test/delete/')
+def delete():
+    u = User.query.first_or_404()
     db.session.delete(u)
     db.session.commit()
     return "user deleted"
