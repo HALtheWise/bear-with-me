@@ -15,7 +15,7 @@ db.init_app(app)
 migrate = Migrate(app, db)
 
 
-@app.route('/message_handler', methods=['POST'])
+@app.route('/message_handler', methods=['POST', 'GET'])
 def handle_message():
     message = twilio_interface.Message(number=request.form['From'], text=request.form['Body'])
     text_ui.handle_message(message)
@@ -29,7 +29,7 @@ def hello_world():
 
 @app.route('/test/add/')
 def add():
-    u = User(phone='911',active=True,last_call=datetime.now()) #TODO: Reasonable test data
+    u = User(phone='911', active=True, last_call=datetime.now())  # TODO: Reasonable test data
     print("creating user", u)
     db.session.add(u)
     db.session.commit()
