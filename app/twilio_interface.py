@@ -3,6 +3,7 @@ import os
 from io import StringIO
 
 from twilio.rest import Client
+from twilio.twiml.voice_response import VoiceResponse, Say
 
 ACCOUNT_SID = os.getenv('TWILIO_ACCOUNT_SID')
 AUTH_TOKEN = os.getenv('TWILIO_AUTH_TOKEN')
@@ -40,6 +41,11 @@ class Message(object):
             from_=PHONE_NUMBER,
             body=self.text
         )
+
+def say(text):
+    response = VoiceResponse()
+    response.say(text, voice='woman', language='en')
+    return str(response)
 
 
 def get_old_messages(since=datetime.datetime.now() - datetime.timedelta(hours=1)):

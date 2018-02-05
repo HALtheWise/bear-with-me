@@ -45,8 +45,10 @@ def delete():
 
 @app.route('/call/incoming')
 def answer():
-    msg = twilio_interface.Message(request.form['From'], "you called?")
-    msg.send()
+    #msg = twilio_interface.Message(request.form['From'], "you called?")
+    #msg.send()
+    
+    return twilio_interface.say("hello")
 
 @app.route('/view')
 def view():
