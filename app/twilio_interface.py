@@ -49,9 +49,10 @@ def say(text):
 
 def dial(number):
     response = VoiceResponse()
-    dial = Dial()
-    dial.number(number)
-    response.append(dial)
+    for num in number:
+        dial = Dial()
+        dial.number(number)
+        response.append(dial)
     return str(response)
 
 
