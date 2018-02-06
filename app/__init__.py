@@ -43,10 +43,10 @@ def delete():
     db.session.commit()
     return "user deleted"
 
-@app.route('/call/incoming')
+@app.route('/call/incoming', methods=['POST'])
 def answer():
-    #msg = twilio_interface.Message(request.form['From'], "you called?")
-    #msg.send()
+    msg = twilio_interface.Message(request.form['From'], "you called?")
+    msg.send()
     
     return twilio_interface.say("hello")
 
