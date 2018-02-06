@@ -3,7 +3,7 @@ import os
 from io import StringIO
 
 from twilio.rest import Client
-from twilio.twiml.voice_response import VoiceResponse, Say
+from twilio.twiml.voice_response import VoiceResponse, Say, Dial
 
 ACCOUNT_SID = os.getenv('TWILIO_ACCOUNT_SID')
 AUTH_TOKEN = os.getenv('TWILIO_AUTH_TOKEN')
@@ -45,6 +45,13 @@ class Message(object):
 def say(text):
     response = VoiceResponse()
     response.say(text, voice='woman', language='en')
+    return str(response)
+
+def dial(number):
+    response = VoiceResponse()
+    dial = Dial()
+    dial.number(number)
+    response.append(dial)
     return str(response)
 
 

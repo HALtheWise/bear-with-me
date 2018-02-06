@@ -29,7 +29,7 @@ def hello_world():
 
 @app.route('/test/add/')
 def add():
-    u = User(phone='911', active=True, last_call=datetime.now())  # TODO: Reasonable test data
+    u = User(phone='202-762-1401', active=True, last_call=datetime.now())  # TODO: Reasonable test data
     print("creating user", u)
     db.session.add(u)
     db.session.commit()
@@ -47,8 +47,7 @@ def delete():
 def answer():
     msg = twilio_interface.Message(request.form['From'], "you called?")
     msg.send()
-    
-    return twilio_interface.say("hello")
+    return twilio_interface.dial('202-762-1401')
 
 @app.route('/view')
 def view():
