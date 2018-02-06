@@ -51,7 +51,7 @@ def dial(number):
     response = VoiceResponse()
     for num in number:
         dial = Dial()
-        dial.number(number)
+        dial.number(num)
         response.append(dial)
     return str(response)
 
