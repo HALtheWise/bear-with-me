@@ -1,3 +1,5 @@
+import random
+
 from app import twilio_interface
 from app.models import *
 from app.text_ui import update_user
@@ -9,6 +11,12 @@ ONBOARDING_MSG = '🐻: Thanks for calling! ' \
 CALL_RESPONSE = '🐻: Thanks for calling! ' \
                 'Text "I\'m in" at any time to join the experiment, or "I\'m out" to get out.'
 
+FLAVOR = [
+    'Do you remember when you wanted the things you have today?',
+    'What is your name? Where does it come from?',
+    'What is your quest?',
+    'What is your favorite color?'
+]
 
 def add_sample_numbers():
     update_user()
@@ -33,7 +41,9 @@ def handle_incoming(number):
         # TODO: Use callbacks to only update the call times of people who actually get called
         update_user(number, call_time=True)
 
-    return twilio_interface.dial(recipients)
+    flavor = random.choice(FLAVOR)
+
+    return twilio_interface.dial(recipients, flavor)
 
 
 def get_recipient_list(number, num_results=2):

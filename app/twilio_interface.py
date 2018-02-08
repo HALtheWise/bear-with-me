@@ -50,12 +50,16 @@ def say(text):
     return str(response)
 
 
-def dial(number):
+def dial(numbers, flavor=''):
     response = VoiceResponse()
-    for num in number:
+    for num in numbers:
         dial = Dial()
         dial.number(num)
         response.append(dial)
+
+    if flavor:
+        response.say(flavor, voice='woman', language='en')
+
     return str(response)
 
 
