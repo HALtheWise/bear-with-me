@@ -1,10 +1,13 @@
 ---
-title: Proposal
+title: Project Proposal — Bear With Me
 layout: post
+permalink: /project-proposal-—-bear-with-me/
 source-id: 14ZAMLI2L7sV2lgrXI_dMlCtVNS89_SsbSDlwtRvcPeE
 published: true
 ---
 HtL Project Proposal – Bear With Me
+
+Team members: Eric, Jared, Toby
 
 # Part I: Project Proposal
 
@@ -22,11 +25,11 @@ When you call, the Bear calls someone else (who has registered) and connects you
 
 Stretch Goals: 
 
-* Signup workflow with user contact time preferences
-
 * User call frequency preferences, and initiating connections
 
 * Fancy conversation starters
+
+* Signup workflow with user contact time preferences
 
 * Security
 
@@ -44,6 +47,8 @@ Stretch Goals:
 
 6. Thermonuclear War breaks out
 
+**_What resources (pointers to information, time with instructors) will help you succeed?_**
+
 * * *
 
 
@@ -53,23 +58,53 @@ Stretch Goals:
 
 For each practice area:
 
-## How you will demonstrate command of this area? What does success look like? [2-5 sentences]
+How you will demonstrate command of this area? What does success look like? [2-5 sentences]
+
+## Continuous Integration (Eric)
+
+A successful continuous integration pipeline will...
+
+* Automatically integrate and test changes to the code before they have been merged into master
+
+    * (extension) require tests to pass before merging to master
+
+* Execute both unit and integration tests
+
+* Execute tests both locally on the development machine and in the cloud
+
+* Be reasonably well-documented and understandable by future users of the project.
+
+The technology that I have seen used other places most commonly is Jenkins CI, but I am open to other approaches
+
+## Storage (Jared)
+
+Setup both a production and a local database, with a migrations workflow for development. 
+
+Document setup instructions, and use flask_sqlalchemy as an ORM. 
+
+Get comfy with postgres.
+
+## Security (Toby)
+
+Keep an eye out for injection points.
+
+Make sure debugging endpoints are removed before deployment.
+
+Protect against malicious callbacks.
 
 * * *
 
 
-# Part III: Demo & Deliverables
+# Part III: Demo, Presentation, Initial Deliverable
 
-*[In class Thursday 2/7]*
+*[In class Thursday 2/8]*
 
-Add a link to your slides here.
+Add a link to your slides, if any, here.
 
 * * *
 
 
-# Part IV: Survey & Reflection
-
-*[Due by noon on Monday 2/12]*
+# Part IV: Survey, Reflection, Final Deliverable
 
 TBD
 
