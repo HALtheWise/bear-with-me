@@ -3,6 +3,7 @@ import os
 from io import StringIO
 
 from twilio.rest import Client
+from twilio.twiml.voice_response import VoiceResponse, Say, Dial
 
 ACCOUNT_SID = os.getenv('TWILIO_ACCOUNT_SID')
 AUTH_TOKEN = os.getenv('TWILIO_AUTH_TOKEN')
@@ -13,7 +14,8 @@ assert AUTH_TOKEN, 'Error: the TWILIO_AUTH_TOKEN is not set'
 assert PHONE_NUMBER, 'Error: the TWILIO_PHONE_NUMBER is not set'
 
 client = Client(ACCOUNT_SID, AUTH_TOKEN)
-
+number, = client.incoming_phone_numbers.list(phone_number=PHONE_NUMBER)
+number.update(voice_url="http://htl-p1-bear.herokuapp.com/call/incoming")
 
 class Message(object):
     """
@@ -39,6 +41,19 @@ class Message(object):
             from_=PHONE_NUMBER,
             body=self.text
         )
+
+def say(text):
+    response = VoiceResponse()
+    response.say(text, voice='woman', language='en')
+    return str(response)
+
+def dial(number):
+    response = VoiceResponse()
+    for num in number:
+        dial = Dial()
+        dial.number(num)
+        response.append(dial)
+    return str(response)
 
 
 def get_old_messages(since=datetime.datetime.now() - datetime.timedelta(hours=1)):

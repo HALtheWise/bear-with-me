@@ -2,7 +2,7 @@ import html
 import os
 from datetime import datetime
 
-from flask import Flask
+from flask import Flask, request
 from flask_migrate import Migrate
 
 from app.models import *
@@ -15,7 +15,7 @@ db.init_app(app)
 migrate = Migrate(app, db)
 
 
-@app.route('/message_handler', methods=['POST'])
+@app.route('/message_handler', methods=['POST', 'GET'])
 def handle_message():
     message = twilio_interface.Message(number=request.form['From'], text=request.form['Body'])
     text_ui.handle_message(message)
@@ -29,7 +29,7 @@ def hello_world():
 
 @app.route('/test/add/')
 def add():
-    u = User(phone='911',active=True,last_call=datetime.now()) #TODO: Reasonable test data
+    u = User(phone='202-762-1401', active=True, last_call=datetime.now())  # TODO: Reasonable test data
     print("creating user", u)
     db.session.add(u)
     db.session.commit()
@@ -43,6 +43,11 @@ def delete():
     db.session.commit()
     return "user deleted"
 
+@app.route('/call/incoming', methods=['POST'])
+def answer():
+    msg = twilio_interface.Message(request.form['From'], "you called?")
+    msg.send()
+    return twilio_interface.dial(['202-480-9268','202-762-1401'])
 
 @app.route('/view')
 def view():
