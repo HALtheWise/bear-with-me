@@ -18,8 +18,6 @@ FLAVOR = [
     'What is your favorite color?'
 ]
 
-def add_sample_numbers():
-    update_user()
 
 def handle_incoming(number):
     """

@@ -21,19 +21,21 @@ INSTRUCTIONS_RESPONSE = '🐻: Sorry, I didn\'t understand that. ' \
 def handle_message(msg):
     """
     Takes action in response to a message including, if necessary, responding.
-    :param (Message) msg: The incomming text message prompting the conversation
+    :param (Message) msg: The incoming text message prompting the conversation
     :return (bool): Whether any database action was taken
     """
     print('Handling message "{}"'.format(msg.text))
 
-    if msg.text.upper() in SIGNDOWN_REQUESTS:
+    text = msg.text.upper().strip()
+
+    if text in SIGNDOWN_REQUESTS:
         update_user(msg.number, False)
 
         msg.text = SIGNDOWN_RESPONSE
         msg.send()
         return True
 
-    if msg.text.upper() in SIGNUP_REQUESTS:
+    if text in SIGNUP_REQUESTS:
         update_user(msg.number, True)
 
         msg.text = SIGNUP_RESPONSE
