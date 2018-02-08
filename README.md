@@ -7,9 +7,9 @@ By: Eric Miller, Toby Shapinsky, Jared Briskman
 Drawing inspiration from [bear-as-a-service](https://github.com/olinlibrary/bear-as-a-service).
 
 ## Overview
-*Bear-with-me* is a project of both software and social invention. Users call **The Bear**, who will connect their call with another random user, and give them a conversation prompt This provides an unexpected yet intentional interaction.
+**bear-with-me** is a project of both software and social invention. Users call *The Bear*, who will connect their call with another random user, and give them a conversation prompt. This provides an unexpected yet intentional interaction.
 
-From a technical perspective, *bear-with-me* is a python webapp integrated with twilio, and deployed on heroku.  
+From a technical perspective, **bear-with-me** is a python webapp integrated with twilio, and deployed on heroku.  
 
 ## Setup
 
