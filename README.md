@@ -1,6 +1,15 @@
 # bear-with-me
 
-Creating authentic human connection in the modern world, via bear.
+**Creating authentic human connection in the modern world, via bear.**
+
+By: Eric Miller, Toby Shapinsky, Jared Briskman 
+
+Drawing inspiration from Oliver Steele's [bear-as-a-service](https://github.com/olinlibrary/bear-as-a-service).
+
+## Overview
+__Bear-with-me__ is a project of both software and social invention. Users call **The Bear**, who will connect their call with another random user, and give them a conversation prompt This provides an unexpected yet intentional interaction.
+
+From a technical perspective, __bear-with-me__ is a python webapp integrated with twilio, and deployed on heroku.  
 
 ## Setup
 
@@ -34,7 +43,7 @@ $ createuser <username>
 $ createdb <dbname>
 $ psql
 # ALTER USER <username> WITH ENCRYPTED PASSWORD '<password>';
-# GRANT ALL PRIVLEGES ON DATABASE <dbname> TO <username> ;
+# GRANT ALL PRIVILEGES ON DATABASE <dbname> TO <username> ;
 # \q 
 ```
 You may also need to modify your `pg_hba.conf` to change local authentication from `peer` or `ident` to `md5`.
@@ -55,9 +64,15 @@ Check the migration script, and apply with:
 $ pipenv run flask db upgrade
 ```
 
-To upgrade the production database, run the procfile upgrade on heroku.
+To upgrade the production database, run:
+```shell
+$ heroku run upgrade
+```
 
 ## Local Testing
+Upon inital setup, you will need to upgrade the local db prior to use.
+Make sure all secrets are set in `env.local`.
+
 To start a local webserver, run:
 ```shell
 $ pipenv run gunicorn app:app
