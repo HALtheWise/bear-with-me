@@ -6,7 +6,7 @@ from flask import Flask, request
 from flask_migrate import Migrate
 
 from app.models import *
-from app import text_ui, twilio_interface
+from app import text_ui, twilio_interface, calls
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Handles deprecation warning
@@ -43,11 +43,18 @@ def delete():
     db.session.commit()
     return "user deleted"
 
-@app.route('/call/incoming', methods=['POST'])
+
+@app.route('/call/incoming', methods=['POST', 'GET'])
 def answer():
+    return calls.handle_incoming(request.form['From'])
+
+
+@app.route('/call/test', methods=['POST', 'GET'])
+def answer_test():
     msg = twilio_interface.Message(request.form['From'], "you called?")
     msg.send()
-    return twilio_interface.dial(['202-480-9268','202-762-1401'])
+    return twilio_interface.dial(['202-480-9268', '202-762-1401'])
+
 
 @app.route('/view')
 def view():

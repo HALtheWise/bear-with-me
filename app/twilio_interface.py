@@ -17,6 +17,7 @@ client = Client(ACCOUNT_SID, AUTH_TOKEN)
 number, = client.incoming_phone_numbers.list(phone_number=PHONE_NUMBER)
 number.update(voice_url="http://htl-p1-bear.herokuapp.com/call/incoming")
 
+
 class Message(object):
     """
     This is the internal representation of an incomming or outgoing text message.
@@ -42,10 +43,12 @@ class Message(object):
             body=self.text
         )
 
+
 def say(text):
     response = VoiceResponse()
     response.say(text, voice='woman', language='en')
     return str(response)
+
 
 def dial(number):
     response = VoiceResponse()
