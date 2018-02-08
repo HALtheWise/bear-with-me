@@ -18,3 +18,10 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+Introduction
+~~~~~~~~~~~~
+
+**bear-with-me** is a project from the spring 2018 session of Hacking the Library at Olin College.
+
+
