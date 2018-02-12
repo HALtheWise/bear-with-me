@@ -24,7 +24,8 @@ def handle_message():
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    """A landing page with basic instructions."""
+    return 'Welcome to bear-with-me! To start, call the bear at ' + str(os.environ["TWILIO_PHONE_NUMBER"]) + '.'
 
 
 @app.route('/test/add/')
