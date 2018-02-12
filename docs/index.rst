@@ -9,7 +9,8 @@ Welcome to bear-with-me's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
+   
+   setup
 
 
 Indices and tables
@@ -24,4 +25,5 @@ Introduction
 
 **bear-with-me** is a project from the spring 2018 session of Hacking the Library at Olin College.
 
+The project is currently "secure through obscurity" or "self documenting" depending on how you look at it. More documentation coming soon!
 
