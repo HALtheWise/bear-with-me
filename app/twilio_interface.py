@@ -13,6 +13,14 @@ assert ACCOUNT_SID, 'Error: the TWILIO_ACCOUNT_SID is not set'
 assert AUTH_TOKEN, 'Error: the TWILIO_AUTH_TOKEN is not set'
 assert PHONE_NUMBER, 'Error: the TWILIO_PHONE_NUMBER is not set'
 
+# You can also write:
+#   ACCOUNT_SID = os.environ['ACCOUNT_SID]
+# to auomatically get an error, if you give up programatic control over the
+# error message. This will also get an error even in optimized code, where
+# `assert` is compiled out — this is probably what you want. However, your
+# code raises an exception when the `ACCOUNT_SID` environment variable is
+# set, but to the empty string; `os.environ[…]` doesn't.
+
 client = Client(ACCOUNT_SID, AUTH_TOKEN)
 number, = client.incoming_phone_numbers.list(phone_number=PHONE_NUMBER)
 number.update(voice_url="http://htl-p1-bear.herokuapp.com/call/incoming")
@@ -65,6 +73,9 @@ def dial(numbers, flavor=''):
 
 def get_old_messages(since=datetime.datetime.now() - datetime.timedelta(hours=1)):
     messages = client.api.messages.list(to=PHONE_NUMBER, date_sent_after=since)
+    # Generators are handy when the data set is large or producing it has side
+    # effects, but they make for fragile code, if the caller is modified to
+    # iterates over them twice (they'll be unexpectedly empty the second time).
     return (Message(msg.from_, msg.body) for msg in messages)
 
 
